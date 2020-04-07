@@ -1,13 +1,15 @@
 const express = require('express');
 
+const UsuarioController = require('./controllers/UsuarioController');
+const SessionController = require('./controllers/SessionController');
+
 const routes = express.Router();
 
-routes.post('/usuario', (request, response) => {
-    const data = request.body;
+routes.post('/sessions', SessionController.create);
 
-    console.log(data);
-
-    return response.json();
-});
+routes.get('/usuario', UsuarioController.index);
+routes.get('/usuario/:id', UsuarioController.indexById);
+routes.post('/usuario', UsuarioController.create);
+routes.put('/usuario/:id', UsuarioController.update);
 
 module.exports = routes;

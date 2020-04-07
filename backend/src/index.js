@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = require('./routes');
 
-const knex = require('../src/database/knex.js');
+const connection = require('../src/database/connection.js');
 
 const app = express();
 

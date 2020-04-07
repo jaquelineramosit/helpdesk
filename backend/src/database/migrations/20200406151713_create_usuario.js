@@ -1,7 +1,10 @@
 
 exports.up = function(knex) {
   return knex.schema.createTable('usuario', function (table) {
-    table.increments();
+    table.engine('InnoDB');
+
+    table.increments('id').primary();
+    
     table.string('nome', 100).notNullable();
     table.string('sobrenome', 100).notNullable();
     table.dateTime('dataNasc', 6).notNullable();
