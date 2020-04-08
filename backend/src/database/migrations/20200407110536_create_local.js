@@ -15,6 +15,7 @@ exports.up = function(knex) {
         table.string('estado', 2).notNullable();
         table.string('telefoneFixo', 15);
         table.string('whatsapp', 15);
+        table.string('cnpj', 15);
         table.string('email', 250);
         table.boolean('ativo', 1).notNullable();
         table.dateTime('dataUltModif', 6).notNullable();

@@ -3,30 +3,30 @@ const connection = require('../database/connection');
 
 module.exports = {
     async index (request, response) {
-        const perfisAcesso = await connection('perfilAcesso').select('*');
+        const tiposTicket = await connection('tipoTicket').select('*');
     
-        return response.json(perfisAcesso);
+        return response.json(tiposTicket);
     },
 
     async indexById (request, response) {
         const  { id }  = request.params;
 
-        const perfilAcesso = await connection('perfilAcesso')
+        const tipoTicket = await connection('tipoTicket')
             .where('id', id)
             .select()
             .first();
     
-        return response.json(perfilAcesso);
+        return response.json(tipoTicket);
     },
     
     async create (request, response) {
         const  usuarioId  = request.headers.authorization;
         const  dataUltModif = getDate();
 
-        const { perfil, descricao, ativo } = request.body;
+        const { nomeTipoTicket, descricao, ativo } = request.body;
 
-        const [id] = await connection('perfilAcesso').insert({
-            perfil,
+        const [id] = await connection('tipoTicket').insert({
+            nomeTipoTicket,
             descricao, 
             ativo,
             dataUltModif,
@@ -40,10 +40,10 @@ module.exports = {
         const   { id }   = request.params;
         const  usuarioId  = request.headers.authorization;
         const  dataUltModif  = getDate();
-        const { perfil, descricao, ativo } = request.body;
+        const { nomeTipoTicket, descricao, ativo } = request.body;
 
-        await connection('perfilAcesso').where('id', id).update({
-            perfil,
+        await connection('tipoTicket').where('id', id).update({
+            nomeTipoTicket,
             descricao, 
             ativo,
             dataUltModif,

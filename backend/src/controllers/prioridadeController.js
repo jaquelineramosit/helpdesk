@@ -3,30 +3,30 @@ const connection = require('../database/connection');
 
 module.exports = {
     async index (request, response) {
-        const perfisAcesso = await connection('perfilAcesso').select('*');
+        const prioridades = await connection('prioridade').select('*');
     
-        return response.json(perfisAcesso);
+        return response.json(prioridades);
     },
 
     async indexById (request, response) {
         const  { id }  = request.params;
 
-        const perfilAcesso = await connection('perfilAcesso')
+        const prioridade = await connection('prioridade')
             .where('id', id)
             .select()
             .first();
     
-        return response.json(perfilAcesso);
+        return response.json(prioridade);
     },
     
     async create (request, response) {
         const  usuarioId  = request.headers.authorization;
         const  dataUltModif = getDate();
 
-        const { perfil, descricao, ativo } = request.body;
+        const { nomePrioridade, descricao, ativo } = request.body;
 
-        const [id] = await connection('perfilAcesso').insert({
-            perfil,
+        const [id] = await connection('prioridade').insert({
+            nomePrioridade,
             descricao, 
             ativo,
             dataUltModif,
@@ -40,10 +40,10 @@ module.exports = {
         const   { id }   = request.params;
         const  usuarioId  = request.headers.authorization;
         const  dataUltModif  = getDate();
-        const { perfil, descricao, ativo } = request.body;
+        const { nomePrioridade, descricao, ativo } = request.body;
 
-        await connection('perfilAcesso').where('id', id).update({
-            perfil,
+        await connection('prioridade').where('id', id).update({
+            nomePrioridade,
             descricao, 
             ativo,
             dataUltModif,

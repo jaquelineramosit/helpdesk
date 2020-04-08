@@ -3,31 +3,30 @@ const connection = require('../database/connection');
 
 module.exports = {
     async index (request, response) {
-        const perfisAcesso = await connection('perfilAcesso').select('*');
+        const tiposRemetente = await connection('tipoRemetente').select('*');
     
-        return response.json(perfisAcesso);
+        return response.json(tiposRemetente);
     },
 
     async indexById (request, response) {
         const  { id }  = request.params;
 
-        const perfilAcesso = await connection('perfilAcesso')
+        const tipoRemetente = await connection('tipoRemetente')
             .where('id', id)
             .select()
             .first();
     
-        return response.json(perfilAcesso);
+        return response.json(tipoRemetente);
     },
     
     async create (request, response) {
         const  usuarioId  = request.headers.authorization;
         const  dataUltModif = getDate();
 
-        const { perfil, descricao, ativo } = request.body;
+        const { nomeTipoRemetente, descricao, ativo } = request.body;
 
-        const [id] = await connection('perfilAcesso').insert({
-            perfil,
-            descricao, 
+        const [id] = await connection('tipoRemetente').insert({
+            nomeTipoRemetente,
             ativo,
             dataUltModif,
             usuarioId
@@ -40,11 +39,10 @@ module.exports = {
         const   { id }   = request.params;
         const  usuarioId  = request.headers.authorization;
         const  dataUltModif  = getDate();
-        const { perfil, descricao, ativo } = request.body;
+        const { nomeTipoRemetente, ativo } = request.body;
 
-        await connection('perfilAcesso').where('id', id).update({
-            perfil,
-            descricao, 
+        await connection('tipoRemetente').where('id', id).update({
+            nomeTipoRemetente,
             ativo,
             dataUltModif,
             usuarioId

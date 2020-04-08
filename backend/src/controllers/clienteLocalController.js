@@ -3,34 +3,34 @@ const connection = require('../database/connection');
 
 module.exports = {
     async index (request, response) {
-        const perfisAcesso = await connection('perfilAcesso').select('*');
+        const clienteLocal = await connection('clienteLocal').select('*');
     
-        return response.json(perfisAcesso);
+        return response.json(clienteLocal);
     },
 
     async indexById (request, response) {
         const  { id }  = request.params;
 
-        const perfilAcesso = await connection('perfilAcesso')
+        const clienteLocal = await connection('clienteLocal')
             .where('id', id)
             .select()
             .first();
     
-        return response.json(perfilAcesso);
+        return response.json(clienteLocal);
     },
     
     async create (request, response) {
         const  usuarioId  = request.headers.authorization;
         const  dataUltModif = getDate();
 
-        const { perfil, descricao, ativo } = request.body;
+        const { clienteId, localId, ativo } = request.body;
 
-        const [id] = await connection('perfilAcesso').insert({
-            perfil,
-            descricao, 
-            ativo,
+        const [id] = await connection('clienteLocal').insert({
+            clienteId,
+            localId,
+            usuarioId,
             dataUltModif,
-            usuarioId
+            ativo
         })
 
         return response.json({ id });
@@ -40,14 +40,14 @@ module.exports = {
         const   { id }   = request.params;
         const  usuarioId  = request.headers.authorization;
         const  dataUltModif  = getDate();
-        const { perfil, descricao, ativo } = request.body;
+        const { clienteId, localId, ativo } = request.body;
 
-        await connection('perfilAcesso').where('id', id).update({
-            perfil,
-            descricao, 
-            ativo,
+        await connection('clienteLocal').where('id', id).update({
+            clienteId,
+            localId,
+            usuarioId,
             dataUltModif,
-            usuarioId
+            ativo
         });           
 
         return response.status(204).send();
