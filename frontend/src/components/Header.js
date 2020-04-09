@@ -1,50 +1,33 @@
 // Header.js
 import React, { Component } from 'react';
-import AdminLTE from 'adminlte-2-react';
 
 export default class Header extends Component {
     render(){
         return (
-            <header className="main-header">
-                <a href="/" className="logo">
-                    <span className="logo-mini"><b>A</b>LT</span>
-                    <span className="logo-lg"><b>Admin</b>LTE</span>
-                </a>
-                <nav className="navbar navbar-static-top">
-                    <a href="#" className="sidebar-toggle" data-toggle="push-menu" role="button">
-                        <span className="sr-only">Toggle navigation</span>
-                    </a>
-                    <div className="navbar-custom-menu">
-                        <ul className="nav navbar-nav">
-                            <li className="dropdown messages-menu">
-                                <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                                    <i className="fa fa-envelope-o"></i>
-                                    <span className="label label-success">4</span>
-                                </a>
-                                <ul className="dropdown-menu">
-                                    <li className="header">You have 4 messages</li>
-                                    <li>
-                                        <ul className="menu">
-                                            <li>
-                                                <a href="#">
-                                                    <div className="pull-left">
-                                                        <img src="img/user2-160x160.jpg" className="img-circle" alt="User Image" />
-                                                    </div>
-                                                    <h4>
-                                                        Support Team
-                                                        <small><i className="fa fa-clock-o"></i> 5 mins</small>
-                                                    </h4>
-                                                    <p>Why not buy a new awesome theme?</p>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+            <div class="wrapper">                
+                    <nav className="main-header navbar navbar-expand navbar-white navbar-light">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link" data-widget="pushmenu" href="#" role="button"><i className="fas fa-bars"></i></a>
+                            </li>
+                            <li className="nav-item d-none d-sm-inline-block">
+                                <a href="index3.html" className="nav-link">Home</a>
+                            </li>
+                            <li className="nav-item d-none d-sm-inline-block">
+                                <a href="#" className="nav-link">Contact</a>
                             </li>
                         </ul>
-                    </div>
-                </nav>
-            </header>
+                    </nav>
+
+                    <form class="form-inline ml-3">
+                        <div class="input-group input-group-sm">
+                            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" />
+                                <div class="input-group-append">
+                                    <button class="btn btn-navbar" type="submit"></button>
+                                </div>
+                        </div>
+                    </form>                 
+            </div>
         )
     }
 }
