@@ -4,32 +4,51 @@ import{ FiLogIn } from 'react-icons/fi'
 import{ FiLock } from 'react-icons/fi'
 import logoimg from '../../assets/logo2.png';
 
-import Header from '../../components/Header';
-
 export default function Logon() {
-    return (   
-        <div>
-            <div>
-                <Header />
-            </div>
-            <div className="content-wrapper">
-                <section className="form">
+    return (  
+        <div className="hold-transition login-page">            
+            <div className="login-box">
+                <div className="login-logo">
+                    <p>Help4</p>                    
+                </div>
 
-                <form>
-                    <h3> Faça seu Logon</h3>
-                    <input placeholder="Usuário" />
-                    <input type="password" placeholder="Senha" />
-                    <button className="button" type="submit">Logon</button>
-                    <Link  className="back-link" to="/dashboard"><FiLogIn size={16} color="#E02041" />Criar Conta</Link>
-                    <Link className="back-link" to="/password"><FiLock size={16} color="#E02041" /> Esqueci minha Senha</Link>
-                    
-
-
-                </form>
-                </section>
-                <img src={logoimg} alt="logo2" />
-            </div>
-        </div>  
+                <div className="card">
+                    <div className="card-body login-card-body">
+                        <form>
+                            <p className="login-box-msg"> Faça seu Logon</p>
+                            <div className="input-group mb-3">
+                                <input className="form-control" placeholder="Usuário" />
+                                <div className="input-group-append">
+                                    <div className="input-group-text">
+                                        <span className="fas fa-user"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="input-group mb-3">
+                                <input type="password" className="form-control" placeholder="Senha" />
+                                <div className="input-group-append">
+                                    <div className="input-group-text">
+                                        <span className="fas fa-lock"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <button className="btn btn-primary btn-block" type="submit">Logon</button>
+                            </div>  
+                            <div className="input-group mb-3">
+                                <img src={logoimg} alt="logo2" />
+                            </div>                          
+                        </form>   
+                        <p class="mb-1">
+                            <Link  className="back-link" to="/dashboard"><FiLogIn size={16} color="#E02041" />Criar Conta</Link>
+                        </p>
+                        <p class="mb-1">
+                            <Link className="back-link" to="/password"><FiLock size={16} color="#E02041" /> Esqueci minha Senha</Link>
+                        </p>            
+                    </div>                    
+                </div>
+            </div>             
+        </div>
     )
     
 }
