@@ -33,14 +33,14 @@ export default function Logon() {
                                 </div>
                             </div>
                             <div className="row">
-                                <button className="btn btn-primary btn-block" type="submit">Logon</button>
+                                <button href="/dashboard"className="btn btn-primary btn-block" type="submit">Logon</button>
                             </div>  
                             <div className="input-group mb-3">
                                 <img src={logoimg} alt="logo2" />
                             </div>                          
                         </form>   
                         <p class="mb-1">
-                            <Link  className="back-link" to="/dashboard"><FiLogIn size={16} color="#E02041" />Criar Conta</Link>
+                            <Link  className="back-link" to="/register"><FiLogIn size={16} color="#E02041" />Criar Conta</Link>
                         </p>
                         <p class="mb-1">
                             <Link className="back-link" to="/password"><FiLock size={16} color="#E02041" /> Esqueci minha Senha</Link>
