@@ -17,7 +17,7 @@ export default function DashBoard() {
             
             <div className="content">
                 <section>
-                    <h2>Cadastro de Ticket</h2>
+                    <h2>Abertura de Ticket</h2>
                     
                     
                     </section>
